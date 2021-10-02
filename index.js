@@ -1,3 +1,5 @@
-export { sanitizeDiacritics } from "./src/sanitizeDiacritics.js";
-export { removeDiacritics } from "./src/removeDiacritics.js";
-export { diacriticList, diacriticMap } from "./src/diacritics.js";
+// sanitizer
+export { sanitize } from "./src/sanitize.js";
+
+// slugify
+export { slugify } from "./src/slugify.js";

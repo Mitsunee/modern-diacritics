@@ -1,9 +1,5 @@
 export const diacriticList = [
   {
-    base: " ",
-    chars: ["\u00a0"]
-  },
-  {
     base: "0",
     chars: ["\u07c0"]
   },

@@ -1,0 +1,26 @@
+name: Check Formatting and Lint
+on:
+  pull_request:
+    branches:
+      - "*"
+  push:
+    branches:
+      - "master"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Dependencies
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn install
+          useRollingCache: true
+      - name: Check Formatting
+        run: yarn prettier -c .
+      - name: Lint
+        run: yarn eslint --max-warnings 0 .
+      - name: Run Tests
+        run: yarn test
