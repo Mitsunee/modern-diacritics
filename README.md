@@ -1,19 +1,28 @@
-# node-diacritics
+# Modern Diacritics
 
-remove diacritics from strings
+A modern way to remove diacritics from strings. Particularly useful for writings search filters.
 
-useful when implementing some kind of search or filter functionality.
+- Modern fork of [**@andrewrk**](https://github.com/andrewrk/)’s [node-diacritics](https://github.com/andrewrk/node-diacritics).
+- **Tree-shakable** ESM module
+
+```js
+import { removeDiacritics } from "modern-diacritics";
+
+removeDiacritics("Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉ"); // "Internationalizati0n"
+```
 
 ## Installation
 
-```
-$ npm install diacritics
+```shell
+npm install modern-diacritics
+# or
+yarn add modern-diacritics
 ```
 
 ## API
 
-```js
-var removeDiacritics = require('diacritics').remove;
-console.log(removeDiacritics("Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉ"));
-// prints "Internationalizati0n"
-```
+WIP - breaking changes may happen at any time!
+
+## Special Thanks
+
+- [**@andrewrk**](https://github.com/andrewrk/) - The original author of node-diacritics
