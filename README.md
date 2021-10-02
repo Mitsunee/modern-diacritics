@@ -20,9 +20,29 @@ npm install modern-diacritics
 yarn add modern-diacritics
 ```
 
-## API
+## Usage
 
-WIP - breaking changes may happen at any time!
+### sanitize
+
+All diacritics in the supplied string are replaced:
+
+```js
+import { sanitize } from "modern-diacritics";
+
+sanitize("HêＬＬó, worＬd!"); // "Hello, world!"
+```
+
+### slugify
+
+The supplied string is sanitized and then turned into a slug:
+
+```js
+import { slugify } from "modern-diacritics";
+
+slugify("HêＬＬó, worＬd!"); // "hello-world"
+```
+
+Whitespace as well as underscores and parenthesis are replaced with dashes. All other symbols will be removed!
 
 ## Special Thanks
 
