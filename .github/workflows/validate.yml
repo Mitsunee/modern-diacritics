@@ -23,4 +23,4 @@ jobs:
       - name: Lint
         run: yarn eslint --max-warnings 0 .
       - name: Run Tests
-        run: yarn test
+        run: yarn mocha
