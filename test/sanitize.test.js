@@ -2,45 +2,31 @@
 import { sanitize } from "../index.js";
 import assert from "assert";
 
-// TODO: find better test names for the old tests and/or replace them
-
 describe("sanitize", function () {
-  it("test 1", () => {
+  it("sanitizes everything (with default options)", () => {
     assert.strictEqual(
-      sanitize("Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉ"),
-      "Internationalizati0n"
+      sanitize("\u2019Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉ\u2018"),
+      "'Internationalizati0n'"
     );
   });
-  it("test 2", () => {
+  it("sanitizes diacritics (symbols disabled)", () => {
     assert.strictEqual(
       sanitize(
-        "Båｃòл íｐѕùｍ ðｏɭ߀ｒ ѕïｔ ａϻèｔ âùþê ａԉᏧ߀üïｌɭê ƃëéｆ ｃｕｌρá ｆïｌèｔ ϻｉǥｎòｎ ｃｕρｉᏧａｔａｔ ｕｔ êлｉｍ ｔòлɢùê."
+        "Båｃòл\u00A0íｐѕùｍ\u00A0ðｏɭ߀ｒ\u00A0ѕïｔ\u00A0ａϻèｔ\u00A0âùþê.",
+        { symbols: false }
       ),
-      "Bacon ipѕum dhol0r ѕit aMet authe and0uille beef culpa filet Mignon cupidatat ut enim tonGue."
+      "Bacon\u00A0ipѕum\u00A0dhol0r\u00A0ѕit\u00A0aMet\u00A0authe."
     );
   });
-  it("test 3", () => {
+  it("latinizes diacritics from diacriticMap", () => {
     assert.strictEqual(sanitize("ᴎᴑᴅᴇȷʂ"), "NoDEJs");
   });
-  it("test 4", () => {
-    assert.strictEqual(sanitize("hambúrguer"), "hamburguer");
-  });
-  it("test 5", () => {
-    assert.strictEqual(sanitize("hŒllœ"), "hOElloe");
-  });
-  it("test 6", () => {
-    assert.strictEqual(sanitize("Fußball"), "Fussball");
-  });
-  it("test 7", () => {
+  it("sanitizes symbols (diacritics disabled)", () => {
     assert.strictEqual(
-      sanitize("ABCDEFGHIJKLMNOPQRSTUVWXYZé"),
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZe"
-    );
-  });
-  it("sanitizes symbols", () => {
-    assert.strictEqual(
-      sanitize("\u2019Quotes\u00A0\uFF02\u00A0Test\u2018"),
-      "'Quotes \" Test'"
+      sanitize("\u2019Quótes\u00A0\uFF02\u00A0Tèst\u2018", {
+        diacritics: false
+      }),
+      "'Quótes \" Tèst'"
     );
   });
 });

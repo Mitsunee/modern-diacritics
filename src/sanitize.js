@@ -2,9 +2,20 @@ import { replacer } from "./helpers/replacer.js";
 import { diacriticMap } from "./maps/diacritics.js";
 import { symbolMap } from "./maps/symbols.js";
 
-export function sanitize(str) {
-  return replacer(str, function (c) {
-    // apply map
-    return diacriticMap.get(c) || symbolMap.get(c) || c;
-  });
+export function sanitize(str, options) {
+  let diacritics = options && options.diacritics === false ? false : true;
+  let symbols = options && options.symbols === false ? false : true;
+
+  return replacer(
+    str,
+    function (c) {
+      let temp;
+
+      if (diacritics && (temp = diacriticMap.get(c))) return temp;
+      if (symbols && (temp = symbolMap.get(c))) return temp;
+
+      return c;
+    },
+    diacritics // pass diacritics option
+  );
 }
