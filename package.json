@@ -8,15 +8,9 @@
   },
   "type": "module",
   "types": "./index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Mitsunee/modern-diacritics.git"
-  },
+  "repository": "Mitsunee/modern-diacritics.git",
   "author": "Misunee",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Mitsunee/modern-diacritics/issues"
-  },
   "scripts": {
     "lint": "eslint .",
     "format": "prettier -w .",
