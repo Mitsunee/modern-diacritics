@@ -24,6 +24,10 @@
     "prepare": "simple-git-hooks",
     "publish": "eslint index.js src && mocha && clean-publish --fields scripts"
   },
+  "prettier": "@foxkit/internal/prettier",
+  "eslintConfig": {
+    "extends": "@foxkit"
+  },
   "simple-git-hooks": {
     "pre-commit": "yarn lint-staged"
   },
@@ -49,6 +53,8 @@
     "src": "src"
   },
   "devDependencies": {
+    "@foxkit/eslint-config": "^1.0.1",
+    "@foxkit/internal": "^2.0.1",
     "clean-publish": "^3.0.3",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
