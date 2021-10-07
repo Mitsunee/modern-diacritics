@@ -3,9 +3,9 @@ import { diacriticMap } from "./maps/diacritics.js";
 import { symbolMap } from "./maps/symbols.js";
 
 export function sanitize(str, options) {
-  let diacritics = options?.diacritics === false ? false : true;
-  let symbols = options && options.symbols === false ? false : true;
-  let lowerCase = options && options.lowerCase === true ? true : false;
+  const diacritics = options?.diacritics ?? true;
+  const symbols = options?.symbols ?? true;
+  const lowerCase = options?.lowerCase ?? false;
 
   const result = replacer(
     str,
