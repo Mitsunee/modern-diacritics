@@ -29,4 +29,7 @@ describe("sanitize", function () {
       "'Quótes \" Tèst'"
     );
   });
+  it("can return all lowercase text", () => {
+    assert.strictEqual(sanitize("Lówᴇrcåsᴇ", { lowerCase: true }), "lowercase");
+  });
 });

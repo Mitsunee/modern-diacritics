@@ -3,10 +3,11 @@ import { diacriticMap } from "./maps/diacritics.js";
 import { symbolMap } from "./maps/symbols.js";
 
 export function sanitize(str, options) {
-  let diacritics = options && options.diacritics === false ? false : true;
+  let diacritics = options?.diacritics === false ? false : true;
   let symbols = options && options.symbols === false ? false : true;
+  let lowerCase = options && options.lowerCase === true ? true : false;
 
-  return replacer(
+  const result = replacer(
     str,
     function (c) {
       let temp;
@@ -18,4 +19,6 @@ export function sanitize(str, options) {
     },
     diacritics // pass diacritics option
   );
+
+  return lowerCase ? result.toLowerCase() : result;
 }

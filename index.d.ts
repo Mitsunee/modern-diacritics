@@ -2,6 +2,7 @@
 export interface SanitizerOptions {
   diacritics?: boolean;
   symbols?: boolean;
+  lowerCase?: boolean;
 }
 export function sanitize(str: string, options?: SanitizerOptions): string;
 
