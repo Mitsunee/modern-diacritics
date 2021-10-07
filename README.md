@@ -43,6 +43,10 @@ sanitize("’Crêpes‘", { diacritics: false });
 // Diacritics-only
 sanitize("’Crêpes‘", { symbols: false });
 // => "’Crepes‘"
+
+// Lowercase-only mode
+sanitize("’Crêpes‘", { lowerCase: true });
+// => "'crepes'"
 ```
 
 ### slugify
@@ -55,7 +59,7 @@ import { slugify } from "modern-diacritics";
 slugify("HêＬＬó, worＬd!"); // "hello-world"
 ```
 
-Whitespace as well as underscores and parenthesis are replaced with dashes. All other symbols will be removed! `slugify` uses the default options of `sanitize`.
+Whitespace as well as underscores and parenthesis are replaced with dashes. All other symbols will be removed! `slugify` uses the `lowerCase` option of `sanitize`.
 
 ## Special Thanks
 
