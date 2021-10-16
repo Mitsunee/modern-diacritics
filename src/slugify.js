@@ -1,7 +1,7 @@
-import { sanitize } from "./sanitize.js";
+import { latinize } from "./latinize.js";
 
 export function slugify(str) {
-  return sanitize(str, { lowerCase: true })
+  return latinize(str, { lowerCase: true })
     .replace(/\s|_|\(|\)/g, "-")
     .replace(/[^a-z-]/g, "");
 }
