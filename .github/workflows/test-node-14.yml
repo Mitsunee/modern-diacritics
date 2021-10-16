@@ -1,0 +1,24 @@
+name: Test Node.js 14.x
+on:
+  pull_request:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn install
+          useRollingCache: true
+      - name: Attempt Build
+        run: yarn build

@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import { slugify } from "../index.js";
+import { slugify } from "../dist/index.js";
 import assert from "assert";
 
 describe("slugify", () => {

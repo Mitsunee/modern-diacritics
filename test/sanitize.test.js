@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import { sanitize } from "../index.js";
+import { sanitize } from "../dist/index.js";
 import assert from "assert";
 
 describe("sanitize", function () {

@@ -53,10 +53,10 @@
     eslint "^7.32.0"
     eslint-config-prettier "^8.3.0"
 
-"@foxkit/internal@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@foxkit/internal/-/internal-2.0.1.tgz#71eb051c4741b997feadebe589178015294bbdf0"
-  integrity sha512-9jNVjiTQpSb51FjiMXTmzRhoEqiOVgTNnzcOxZ9t0HhhlG3qvbBGIITiVZufiDNs6kxOqdf9b5Yor5LQPWoBKA==
+"@foxkit/internal@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@foxkit/internal/-/internal-2.1.0.tgz#d7590fa1d524d68945bf993fb9ea6f8b55488a39"
+  integrity sha512-NLTs65LZ2VyLe0mB5O1Mb91LMWs7qzNUe87u8gK7cHhFdT0MnD4lwEe+WMMWamBDVFv1DW8syqpPw4howWQ9ag==
   dependencies:
     rollup "^2.58.0"
 

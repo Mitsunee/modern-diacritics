@@ -2,26 +2,44 @@
   "name": "modern-diacritics",
   "version": "1.2.2",
   "description": "A modern way to remove diacritics from strings",
-  "exports": {
-    ".": "./index.js",
-    "./package.json": "./package.json"
-  },
+  "keywords": [
+    "diacritics",
+    "remove",
+    "removal",
+    "search",
+    "string",
+    "slugify",
+    "slug"
+  ],
+  "repository": "Mitsunee/modern-diacritics",
+  "author": "Mitsunee <michelle@mitsunee.com>",
+  "license": "MIT",
   "type": "module",
   "types": "./index.d.ts",
-  "repository": "Mitsunee/modern-diacritics.git",
-  "author": "Misunee",
-  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "lint": "eslint .",
     "format": "prettier -w .",
-    "test": "eslint index.js src && mocha",
+    "prebuild": "eslint src/**",
+    "build": "rollup -c",
+    "postbuild": "mocha",
     "prepare": "simple-git-hooks",
-    "publish": "eslint index.js src && mocha && clean-publish --fields scripts"
+    "dev": "rollup -c -w",
+    "publish": "yarn build && clean-publish --fields scripts --files src CHANGELOG.md"
   },
-  "prettier": "@foxkit/internal/prettier",
   "eslintConfig": {
     "extends": "@foxkit"
   },
+  "prettier": "@foxkit/internal/prettier",
+  "browserslist": [
+    "maintained node versions"
+  ],
   "simple-git-hooks": {
     "pre-commit": "yarn lint-staged"
   },
@@ -34,21 +52,12 @@
       "prettier -w"
     ]
   },
-  "keywords": [
-    "diacritics",
-    "remove",
-    "removal",
-    "search",
-    "string",
-    "slugify",
-    "slug"
-  ],
   "directories": {
-    "src": "src"
+    "dist": "dist"
   },
   "devDependencies": {
     "@foxkit/eslint-config": "^1.0.1",
-    "@foxkit/internal": "^2.0.1",
+    "@foxkit/internal": "^2.1.0",
     "clean-publish": "^3.0.3",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
