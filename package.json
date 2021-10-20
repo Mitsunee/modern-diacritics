@@ -58,7 +58,7 @@
       "eslint",
       "prettier -w"
     ],
-    "**/*.{json,md}": [
+    "**/*.{json,md,d.ts}": [
       "prettier -w"
     ]
   },
