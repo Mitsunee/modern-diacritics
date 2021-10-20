@@ -5,7 +5,7 @@ import { normalizeSymbols } from "./normalizeSymbols.js";
 export function latinize(str, options) {
   const symbols = options?.symbols ?? true;
   const lowerCase = options?.lowerCase ?? false;
-  const trim = options?.trim ?? true;
+  const trim = options?.trim ?? false;
 
   let tmp,
     subject = removeDiacritics(str),
