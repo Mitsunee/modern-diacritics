@@ -31,7 +31,15 @@
     "postbuild": "mocha",
     "prepare": "simple-git-hooks",
     "dev": "rollup -c -w",
-    "publish": "yarn build && clean-publish --fields scripts --files src CHANGELOG.md"
+    "publish": "yarn build && clean-publish"
+  },
+  "packageManager": "yarn",
+  "clean-publish": {
+    "packageManager": "yarn",
+    "fields": [
+      "scripts",
+      "packageManager"
+    ]
   },
   "eslintConfig": {
     "extends": "@foxkit"
