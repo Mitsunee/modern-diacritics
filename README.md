@@ -1,16 +1,16 @@
 # Modern Diacritics
 
-A modern way to remove diacritics from strings. Particularly useful for writings search filters.
+A modern way to latinize/ascii-fold strings and normalize symbols. Particularly useful for writings search filters.
 
-- Modern fork of [**@andrewrk**](https://github.com/andrewrk/)’s [node-diacritics](https://github.com/andrewrk/node-diacritics).
-- **Tree-shakable** ESM module
-- Provides **slugify** function with built-in sanitizer!
+- Modern fork of [**@andrewrk**](https://github.com/andrewrk/)'s [node-diacritics](https://github.com/andrewrk/node-diacritics) with many new features
+- **Dual-published** as ESM and CJS modules
 - Normalizes similar symbols like quotation marks
+- Diacritic Removal and Symbol Normalization also available as separate functions
+- Provides **slugify** function with built-in latinization!
 
 ```js
-import { sanitize } from "modern-diacritics";
-
-sanitize("Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉ"); // "Internationalizati0n"
+latinize("Iлｔèｒｎåｔïｏｎɑｌíƶａｔï߀ԉ");
+// => "Internationalizati0n"
 ```
 
 ## Installation
@@ -23,35 +23,75 @@ yarn add modern-diacritics
 
 ## Usage
 
-### sanitize
+### latinize
 
-All diacritics in the supplied string are replaced:
+The supplied is latinized with normalized symbols.
 
 ```js
-import { sanitize } from "modern-diacritics";
+import { latinize } from "modern-diacritics";
 
-sanitize("HêＬＬó, worＬd!"); // => "Hello, world!"
+latinize("Hêƚƚó, ’worƚd‘!"); // => "Hello, 'world'!"
 ```
 
-You may also pass an options object to disable diacritic replacement or symbol replacement:
+`latinize` uses `removeDiacritics` and `normalizeSymbols` internally. They are available separatly for applications where you may not wants to fully latinize strings.
+
+**Options**:
 
 ```js
-// Symbols-only
-sanitize("’Crêpes‘", { diacritics: false });
-// => "'Crêpes'"
+// Symbols option: on by default, disable to preserve symbols
+latinize("Hêƚƚó, ’worƚd‘!", { symbols: false });
+// => "Hello, ’world‘!"
 
-// Diacritics-only
-sanitize("’Crêpes‘", { symbols: false });
-// => "’Crepes‘"
+// Lowercase option: off by default, enable to transform to all lowercase characters
+latinize("Hêƚƚó, ’worƚd‘!", { lowerCase: true });
+// => "hello, 'world'!"
 
-// Lowercase-only mode
-sanitize("’Crêpes‘", { lowerCase: true });
-// => "'crepes'"
+// Trim option: off by default, enable to trim whitespace at start and end of string
+latinize(" Hêƚƚó, ’worƚd‘!  ", { trim: true });
+// => "Hello, 'world'!"
+```
+
+### normalizeSymbols
+
+Normalizes symbols in the supplied string and trims whitespace at the start and end of the string (can be disabled, see Options).
+
+```js
+import { normalizeSymbols } from "modern-diacritics";
+
+normalizeSymbols(" “Hauptstraße” ");
+// => '"Hauptstraße"'
+```
+
+**Options**:
+
+```js
+// Trim option: on by default, disable to preserve all whitespace characters as spaces
+normalizeSymbols(" “Hauptstraße” ", { trim: false });
+// => ' "Hauptstraße" '
+```
+
+### removeDiacritics
+
+Provies simplified diacritic removal, which does not further latinize strings or normalize symbols.
+
+```js
+import { removeDiacritics } from "modern-diacritics";
+
+removeDiacritics("Crêpes");
+// => "Crepes"
+```
+
+**Options**:
+
+```js
+// Lowercase option: off by default, enable to transform to all lowercase characters
+removeDiacritics("Crêpes", { lowerCase: true });
+// => "crepes"
 ```
 
 ### slugify
 
-The supplied string is sanitized and then turned into a slug:
+The supplied string is latinized and then turned into a slug:
 
 ```js
 import { slugify } from "modern-diacritics";
@@ -59,7 +99,7 @@ import { slugify } from "modern-diacritics";
 slugify("HêＬＬó, worＬd!"); // "hello-world"
 ```
 
-Whitespace as well as underscores and parenthesis are replaced with dashes. All other symbols will be removed! `slugify` uses the `lowerCase` option of `sanitize`.
+Whitespace as well as underscores and parenthesis are replaced with dashes. All other symbols will be removed! `slugify` uses the `lowerCase` option of `sanitize`. `trim` is not used and spaces will be transformed to dashes.
 
 ## Special Thanks
 
@@ -69,3 +109,8 @@ Whitespace as well as underscores and parenthesis are replaced with dashes. All 
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md)
+
+## Planned features
+
+- Custom replacer lists/maps
+- Adding more symbols to normalize (feel free to submit suggestions)

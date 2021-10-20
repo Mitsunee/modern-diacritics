@@ -1,7 +1,7 @@
 {
   "name": "modern-diacritics",
   "version": "1.2.2",
-  "description": "A modern way to remove diacritics from strings",
+  "description": "A modern way to latinize/ascii-fold strings and normalize symbols.",
   "keywords": [
     "diacritics",
     "remove",
