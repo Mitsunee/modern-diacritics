@@ -9,7 +9,9 @@
     "search",
     "string",
     "slugify",
-    "slug"
+    "slug",
+    "latinize",
+    "normalize"
   ],
   "repository": "Mitsunee/modern-diacritics",
   "author": "Mitsunee <michelle@mitsunee.com>",
