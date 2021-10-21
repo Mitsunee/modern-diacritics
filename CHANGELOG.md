@@ -6,7 +6,7 @@
 - New API:
   - sanitize => latinize:
     - diacritic option removed
-    - new trim option (**on** by default!)
+    - new trim option (**off** by default!)
   - new separate function `removeDiacritics` for simple removal of diacritics (with lowerCase option, **off** by default)
   - new separate function `normalizeSymbols` for handling only symbols (with trim option, **on** by default)
 - added corepack config and updated publish configs
