@@ -6,14 +6,22 @@ export function latinize(str, options) {
   const symbols = options?.symbols ?? true;
   const lowerCase = options?.lowerCase ?? false;
   const trim = options?.trim ?? false;
+  const forceSingleSpace = options?.forceSingleSpace ?? false;
+  const replaceWhiteSpace = options?.replaceWhiteSpace ?? false;
 
   let tmp,
     subject = removeDiacritics(str),
     result = "";
 
   // prepare subject
-  if (symbols) subject = normalizeSymbols(subject, { trim: false });
   if (trim) subject = subject.trim();
+  if (symbols) {
+    subject = normalizeSymbols(subject, {
+      trim: false,
+      forceSingleSpace,
+      replaceWhiteSpace
+    });
+  }
   subject = subject.split("");
 
   for (let i = 0; i < subject.length; i++) {

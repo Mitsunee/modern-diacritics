@@ -54,7 +54,7 @@
     "pre-commit": "yarn lint-staged"
   },
   "lint-staged": {
-    "**/*.js": [
+    "**/*.{js,cjs}": [
       "eslint",
       "prettier -w"
     ],

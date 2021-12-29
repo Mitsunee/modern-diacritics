@@ -21,4 +21,18 @@ describe("normalizeSymbols (esm)", () => {
       "  With   Spaces  "
     );
   });
+  it("can replace white spaces", () => {
+    strictEqual(
+      normalizeSymbols("replace with dashes", { replaceWhiteSpace: "-" }),
+      "replace-with-dashes"
+    );
+  });
+  it("can remove duplicate spaces", () => {
+    strictEqual(
+      normalizeSymbols("only   one\u00A0\u00A0\u00A0space", {
+        forceSingleSpace: true
+      }),
+      "only one space"
+    );
+  });
 });

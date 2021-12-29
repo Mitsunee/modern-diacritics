@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 const { slugify } = require("../dist/index.cjs");
-const { strictEqual} = require("assert");
+const { strictEqual } = require("assert");
 
 describe("slugify (cjs)", () => {
   it("creates slugs", () => {
@@ -18,7 +18,16 @@ describe("slugify (cjs)", () => {
   it("it keeps existing dashes", () => {
     strictEqual(slugify("lorem-Îpsum"), "lorem-ipsum");
   });
-  it("does not use trim option and transforms spaces instead", () => {
+  it("does not use trim option by default and transforms spaces instead", () => {
     strictEqual(slugify("  spáaaaacè  "), "--spaaaaace--");
+  });
+  it("can use trim option", () => {
+    strictEqual(slugify("  spáaaaacè  ", { trim: true }), "spaaaaace");
+  });
+  it("can use forceSingleSpace option", () => {
+    strictEqual(
+      slugify("  spáaaaacè  ", { forceSingleSpace: true }),
+      "-spaaaaace-"
+    );
   });
 });

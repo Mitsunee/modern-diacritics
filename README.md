@@ -33,7 +33,7 @@ import { latinize } from "modern-diacritics";
 latinize("Hêƚƚó, ’worƚd‘!"); // => "Hello, 'world'!"
 ```
 
-`latinize` uses `removeDiacritics` and `normalizeSymbols` internally. They are available separatly for applications where you may not wants to fully latinize strings.
+`latinize` uses `removeDiacritics` and `normalizeSymbols` internally. They are available separatly for applications where you may not wants to fully latinize strings. Options are passed along internally where applicable.
 
 **Options**:
 
@@ -68,6 +68,19 @@ normalizeSymbols(" “Hauptstraße” ");
 // Trim option: on by default, disable to preserve all whitespace characters as spaces
 normalizeSymbols(" “Hauptstraße” ", { trim: false });
 // => ' "Hauptstraße" '
+
+// Force Single Space option: off by default, enable to replace consecutive whitespaces with a single whitespace
+normalizeSymbols(" “Hauptstraße   42” ", { forceSingleSpace: true });
+// => '"Hauptstraße 42"'
+
+// Replace Whitespace option: off by default, set any string to be used as replacement for whitespaces
+normalizeSymbols(" “Hauptstraße   42” ", { replaceWhiteSpace: "_" });
+// => '"Hauptstraße_42"'
+normalizeSymbols(" “Hauptstraße   42” ", {
+  replaceWhiteSpace: "_",
+  trim: false
+});
+// => '_"Hauptstraße_42"_'
 ```
 
 ### removeDiacritics
@@ -99,7 +112,11 @@ import { slugify } from "modern-diacritics";
 slugify("HêＬＬó, worＬd!"); // "hello-world"
 ```
 
-Whitespace as well as underscores and parenthesis are replaced with dashes. All other symbols will be removed! `slugify` uses the `lowerCase` option of `sanitize`. `trim` is not used and spaces will be transformed to dashes.
+Whitespace as well as underscores and parenthesis are replaced with dashes. All other symbols will be removed! `slugify` uses the `lowerCase` and `replaceWhiteSpace` options of `normalizeSymbols`. `trim` is not used and spaces will be transformed to dashes.
+
+**Options**:
+
+`slugify` supports `normalizeSymbols`'s `trim` and `forceSingleSpace` options. For backwards compatibility these two options use `false` as their default value.
 
 ## Special Thanks
 

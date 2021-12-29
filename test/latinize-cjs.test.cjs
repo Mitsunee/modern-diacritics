@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 const { latinize } = require("../dist/index.cjs");
-const {strictEqual} = require("assert");
+const { strictEqual } = require("assert");
 
 describe("latinize (cjs)", function () {
   it("latinizes everything by default", () => {
@@ -22,8 +22,8 @@ describe("latinize (cjs)", function () {
     strictEqual(latinize("Lówᴇrcåsᴇ", { lowerCase: true }), "lowercase");
   });
   it("can trim whitespace at start and end with trim option enabled", () => {
-    strictEqual(latinize("  Wîｔh tｒïm  ", {trim:true}), "With trim");
-  })
+    strictEqual(latinize("  Wîｔh tｒïm  ", { trim: true }), "With trim");
+  });
   it("does not trim by default (trim option disabled)", () => {
     strictEqual(latinize("\u00A0ᴎᴑᴅᴇȷʂ "), " NoDEJs ");
   });
