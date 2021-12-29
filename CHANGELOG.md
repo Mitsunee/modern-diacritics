@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.0
+
+- Added `forceSingleSpace` option to `normalizeSymbols`, `latinize` and `slugify`
+- Added `replaceWhiteSpace` option to `normalizeSymbols` and `latinize`
+- Rewrote types to use merged interfaces for `latinize`
+
 ## v2.0.0
 
 - Added dual-publishing
