@@ -123,6 +123,10 @@ Whitespace as well as underscores and parenthesis are replaced with dashes. All 
 - [**@andrewrk**](https://github.com/andrewrk/) - The original author of node-diacritics
 - [**@marcelo-ribeiro**](https://github.com/marcelo-ribeiro) - For his gist ["javascript-remove-accents.js"](https://gist.github.com/marcelo-ribeiro/abd651b889e4a20e0bab558a05d38d77)
 
+## Contributors
+
+- [Paso](https://github.com/Paso)
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md)
