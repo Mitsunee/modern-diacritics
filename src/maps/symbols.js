@@ -12,7 +12,7 @@ export const symbolList = [
     chars: ["\u201C", "\u201D", "\uFF02"]
   },
   {
-    base: '-',
+    base: "-",
     chars: ["\u2013", "\u2014", "\u2212"]
   }
 ];
