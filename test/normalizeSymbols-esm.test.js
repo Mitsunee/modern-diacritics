@@ -35,4 +35,10 @@ describe("normalizeSymbols (esm)", () => {
       "only one space"
     );
   });
+  it("can normalize dashes", () => {
+    strictEqual(
+      normalizeSymbols("hyphen-minus:- endash:– emdash:— minus:−"),
+      "hyphen-minus:- endash:- emdash:- minus:-"
+    );
+  });
 });
