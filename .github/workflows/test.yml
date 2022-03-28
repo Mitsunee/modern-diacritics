@@ -1,4 +1,4 @@
-name: Test Node.js 14.x
+name: Lint and Test
 on:
   pull_request:
   push:
@@ -28,7 +28,7 @@ jobs:
     needs: lint
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x, 17.x]
+        node-version: [14.x, 16.x, 17.x]
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
