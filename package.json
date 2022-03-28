@@ -37,36 +37,6 @@
   },
   "packageManager": "yarn",
   "clean-publish": {
-    "packageManager": "yarn",
-    "fields": [
-      "scripts",
-      "packageManager"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "@foxkit"
-  },
-  "prettier": "@foxkit/internal/prettier",
-  "browserslist": [
-    "maintained node versions"
-  ],
-  "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged"
-  },
-  "lint-staged": {
-    "**/*.{js,cjs}": [
-      "eslint",
-      "prettier -w"
-    ],
-    "**/*.{json,md,d.ts}": [
-      "prettier -w"
-    ]
-  },
-  "files": [
-    "dist/",
-    "index.d.ts"
-  ],
-  "clean-publish": {
     "withoutPublish": true,
     "tempDir": "tmp",
     "packageManager": "yarn",
@@ -79,14 +49,37 @@
       "rollup.config.mjs"
     ]
   },
+  "eslintConfig": {
+    "extends": "@foxkit"
+  },
+  "prettier": "@foxkit/internal/prettier",
+  "browserslist": [
+    "maintained node versions"
+  ],
+  "simple-git-hooks": {
+    "pre-commit": "yarn nano-staged"
+  },
+  "nano-staged": {
+    "**/*.{js,cjs}": [
+      "eslint",
+      "prettier -w"
+    ],
+    "**/*.{json,md,d.ts}": [
+      "prettier -w"
+    ]
+  },
+  "files": [
+    "dist/",
+    "index.d.ts"
+  ],
   "devDependencies": {
     "@foxkit/eslint-config": "^1.1.0",
     "@foxkit/internal": "^3.0.0",
     "clean-publish": "^4.0.0",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
-    "lint-staged": "^11.1.2",
     "mocha": "^9.1.2",
+    "nano-staged": "^0.6.0",
     "prettier": "^2.6.1",
     "simple-git-hooks": "^2.7.0"
   }
