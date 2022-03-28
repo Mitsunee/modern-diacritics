@@ -28,19 +28,25 @@
   "scripts": {
     "lint": "eslint .",
     "format": "prettier -w .",
-    "prebuild": "eslint src/**",
+    "test": "uvu",
+    "prebuild": "eslint src/** && uvu",
     "build": "rollup -c",
-    "postbuild": "mocha",
     "prepare": "simple-git-hooks",
     "dev": "rollup -c -w",
     "publish": "yarn build && clean-publish"
   },
   "packageManager": "yarn",
   "clean-publish": {
+    "withoutPublish": true,
+    "tempDir": "tmp",
     "packageManager": "yarn",
     "fields": [
       "scripts",
       "packageManager"
+    ],
+    "files": [
+      "src",
+      "rollup.config.mjs"
     ]
   },
   "eslintConfig": {
@@ -51,9 +57,9 @@
     "maintained node versions"
   ],
   "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged"
+    "pre-commit": "yarn nano-staged"
   },
-  "lint-staged": {
+  "nano-staged": {
     "**/*.{js,cjs}": [
       "eslint",
       "prettier -w"
@@ -62,18 +68,22 @@
       "prettier -w"
     ]
   },
-  "directories": {
-    "dist": "dist"
-  },
+  "files": [
+    "dist/",
+    "index.d.ts"
+  ],
   "devDependencies": {
-    "@foxkit/eslint-config": "^1.0.1",
-    "@foxkit/internal": "^2.1.0",
-    "clean-publish": "^3.0.3",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "lint-staged": "^11.1.2",
-    "mocha": "^9.1.2",
-    "prettier": "^2.4.1",
-    "simple-git-hooks": "^2.6.1"
+    "@foxkit/eslint-config": "^1.1.0",
+    "@foxkit/internal": "^3.0.0",
+    "clean-publish": "^4.0.0",
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "nano-staged": "^0.6.0",
+    "prettier": "^2.6.1",
+    "simple-git-hooks": "^2.7.0",
+    "uvu": "^0.5.3"
+  },
+  "engines": {
+    "node": "^14 || >=16"
   }
 }
