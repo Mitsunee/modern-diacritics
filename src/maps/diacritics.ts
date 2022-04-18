@@ -1,4 +1,6 @@
-export const diacriticList = [
+import { CharList, CharMap } from "./types";
+
+export const diacriticList: CharList = [
   {
     base: "0",
     chars: ["\u07c0"]
@@ -577,6 +579,6 @@ export const diacriticList = [
   }
 ];
 
-export const diacriticMap = new Map(
+export const diacriticMap: CharMap = new Map(
   diacriticList.flatMap(({ base, chars }) => chars.map(char => [char, base]))
 );

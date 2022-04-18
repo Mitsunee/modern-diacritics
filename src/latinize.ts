@@ -1,13 +1,17 @@
-import { diacriticMap } from "./maps/diacritics.js";
-import { removeDiacritics } from "./removeDiacritics.js";
-import { normalizeSymbols } from "./normalizeSymbols.js";
+import { diacriticMap } from "./maps/diacritics";
+import { removeDiacritics, DiacriticOptions } from "./removeDiacritics";
+import { normalizeSymbols, SymbolOptions } from "./normalizeSymbols";
 
-export function latinize(str, options) {
+export interface LatinizeOptions extends SymbolOptions, DiacriticOptions {
+  symbols?: boolean;
+}
+
+export function latinize(str: string, options: LatinizeOptions): string {
   const symbols = options?.symbols ?? true;
   const lowerCase = options?.lowerCase ?? false;
   const trim = options?.trim ?? false;
   const forceSingleSpace = options?.forceSingleSpace ?? false;
-  const replaceWhiteSpace = options?.replaceWhiteSpace ?? false;
+  const replaceWhiteSpace = options?.replaceWhiteSpace ?? undefined;
 
   let tmp,
     subject = removeDiacritics(str),
@@ -22,7 +26,6 @@ export function latinize(str, options) {
       replaceWhiteSpace
     });
   }
-  subject = subject.split("");
 
   for (let i = 0; i < subject.length; i++) {
     const char = subject[i];

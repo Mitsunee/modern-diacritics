@@ -1,8 +1,14 @@
-import { symbolList, symbolMap } from "./maps/symbols.js";
+import { symbolList, symbolMap } from "./maps/symbols";
 
 const allSymbols = new RegExp(symbolList.flatMap(c => c.chars).join("|"), "g");
 
-export function normalizeSymbols(str, options) {
+export interface SymbolOptions {
+  trim?: boolean;
+  forceSingleSpace?: boolean;
+  replaceWhiteSpace?: string;
+}
+
+export function normalizeSymbols(str: string, options?: SymbolOptions): string {
   const trim = options?.trim ?? true;
   const forceSingleSpace = options?.forceSingleSpace ?? false;
   const replaceWhiteSpace = options?.replaceWhiteSpace ?? false;

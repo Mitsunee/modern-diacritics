@@ -17,7 +17,6 @@
   "author": "Mitsunee <michelle@mitsunee.com>",
   "license": "MIT",
   "type": "module",
-  "types": "./index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",

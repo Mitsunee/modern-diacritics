@@ -1,4 +1,6 @@
-export const symbolList = [
+import { CharList, CharMap } from "./types";
+
+export const symbolList: CharList = [
   {
     base: " ",
     chars: ["\u00A0"]
@@ -17,6 +19,6 @@ export const symbolList = [
   }
 ];
 
-export const symbolMap = new Map(
+export const symbolMap: CharMap = new Map(
   symbolList.flatMap(({ base, chars }) => chars.map(char => [char, base]))
 );

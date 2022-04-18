@@ -1,4 +1,11 @@
-export function removeDiacritics(str, options) {
+export interface DiacriticOptions {
+  lowerCase?: boolean;
+}
+
+export function removeDiacritics(
+  str: string,
+  options?: DiacriticOptions
+): string {
   const subject = `${str}`.normalize("NFD");
   let result;
 
