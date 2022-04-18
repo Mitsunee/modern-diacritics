@@ -1,6 +1,6 @@
 import { test } from "uvu";
 import { is } from "uvu/assert";
-import { removeDiacritics } from "../src/removeDiacritics.js";
+import { removeDiacritics } from "../src/removeDiacritics.ts";
 
 test("removes diacritics", () => {
   is(removeDiacritics("éÂ Çü"), "eA Cu");
