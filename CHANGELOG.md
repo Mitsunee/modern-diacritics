@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.3.0
+
+- Refactored project as TypeScript
+
+## 2.2.1
+
+- Fixed missing dev dependency rollup
+
+## 2.2.0
+
+- Normalize dashes to ASCII hyphen-minus #4
+- Upgraded dependencies
+- migrated CI to nano-staged and uvu
+- added engines field (should support node.js 14, 16 and 17. node.js 12 was never supported and failed testing. This should not be a breaking change)
+
 ## v2.1.0
 
 - Added `forceSingleSpace` option to `normalizeSymbols`, `latinize` and `slugify`
