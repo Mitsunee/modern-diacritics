@@ -1,6 +1,6 @@
 import { test } from "uvu";
 import { is } from "uvu/assert";
-import { slugify } from "../src/slugify.js";
+import { slugify } from "../src/slugify.ts";
 
 test("creates slugs", () => {
   is(slugify("Lorem ipsum"), "lorem-ipsum");

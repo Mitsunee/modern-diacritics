@@ -1,6 +1,11 @@
-import { latinize } from "./latinize.js";
+import { latinize } from "./latinize";
 
-export function slugify(str, options) {
+export interface SlugifyOptions {
+  forceSingleSpace?: boolean;
+  trim?: boolean;
+}
+
+export function slugify(str: string, options?: SlugifyOptions): string {
   return latinize(str, {
     lowerCase: true,
     replaceWhiteSpace: "-",

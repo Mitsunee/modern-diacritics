@@ -1,6 +1,6 @@
 import { test } from "uvu";
 import { is } from "uvu/assert";
-import { normalizeSymbols } from "../src/normalizeSymbols.js";
+import { normalizeSymbols } from "../src/normalizeSymbols.ts";
 
 test("sanitizes symbols", () => {
   is(

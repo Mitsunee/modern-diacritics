@@ -40,4 +40,20 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Run Tests
-        run: yarn uvu
+        run: yarn test
+
+  types:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: yarn
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Run Typecheck
+        run: yarn tsc --noEmit

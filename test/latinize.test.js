@@ -1,6 +1,6 @@
 import { test } from "uvu";
 import { is } from "uvu/assert";
-import { latinize } from "../src/latinize.js";
+import { latinize } from "../src/latinize.ts";
 
 test("latinizes everything by default", () => {
   is(
