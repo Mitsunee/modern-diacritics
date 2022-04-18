@@ -63,11 +63,11 @@
     "pre-commit": "yarn nano-staged"
   },
   "nano-staged": {
-    "**/*.{js,cjs}": [
+    "**/*.{ts,js}": [
       "eslint",
       "prettier -w"
     ],
-    "**/*.{json,md,d.ts}": [
+    "**/*.{json,md,yml}": [
       "prettier -w"
     ]
   },
