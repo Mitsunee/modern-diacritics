@@ -4,6 +4,7 @@ import { normalizeSymbols, SymbolOptions } from "./normalizeSymbols";
 
 export interface LatinizeOptions extends SymbolOptions, DiacriticOptions {
   symbols?: boolean;
+  removeDiacritics?: boolean;
 }
 
 export function latinize(str: string, options: LatinizeOptions): string {
